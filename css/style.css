@@ -59,8 +59,7 @@ main {
 .profilo-content {
     height: 100%;
     background-color: var(--grigioSfondo);
-    width: 200px;
-    padding: var(--padding20);
+    padding: 8px 15px;
 }
 .profilo-img {
     height: 100%;
@@ -70,8 +69,8 @@ main {
 .myImg {
     height: 100%;
     width: 53px;
-    background-color: green;
     border-radius: 50%;
+    overflow: hidden;
 
 }
 .myImg img {
@@ -81,7 +80,9 @@ main {
 .my-name {
     height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
 }
 
 .profilo-info {
@@ -127,7 +128,7 @@ main {
 }
 .search-content {
     width: 50px;
-    height: 80%;
+    height: 79%;
 }
 .search-content label {
     height: 100%;
@@ -135,7 +136,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 2px solid var(--grigioSfondo);
+    border-right: 1px solid var(--grigioSfondo);
     background-color: white;
 }
 .input-content {
@@ -153,14 +154,67 @@ main {
                                             /* FINE INPUT SEARCH CONTENT */
 
 
+                                            /* MY CHAT CONTENT */
+.my-chat-content {
+    height: calc(100% - 70px - 100px - 45px );
+    background-color: #6a6b6d;
+    overflow-y: scroll;
+}
+.my-chat-content::-webkit-scrollbar {
+    width: 10px;
+    background: var(--grigioSfondo);
+    /* border-radius: 10px; */
+}
+.my-chat-content::-webkit-scrollbar-track {
+    background: var(--grigioSfondo);
+    border-radius: 10px;
+}
+.my-chat-content::-webkit-scrollbar-thumb{
+    background: #ffffffc7;
+  border-radius: 10px;
+}
+.my-chat-content::-webkit-scrollbar-thumb:hover {
+  background: #a50b0b;
+}
 
+.box-chat {
+    height: calc(100% / 6);
+    background-color: rgb(125, 125, 212);
+    display: flex;
+    align-items: center;
+    padding: var(--padding20);
+    gap: 20px;
+    position: relative;
+}
 
+.chat-image {
+    height: 85%;
+    width: 62px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.chat-image img {
+    width: 100%;
+}
+.chat-info {
+     height: 85%;
+     display: flex;
+     flex-direction: column;
+}
+.chat-info .chat-name {
+    font-size: 18px;
+}
+.chat-info .chat-message {
+    font-size: 14px;
+}
+.chat-date {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 13px;
+}
 
-
-
-
-
-
+                                            /* FINE MY CHAT CONTENT */
 
                                             /* FINE LEFT CONTENT */
 
@@ -170,4 +224,57 @@ main {
 .right-content {
     width: 63%;
     border: 1px solid black;
+}
+                                            /* MESSAGE CHAT CONTENT */
+.message-chat-content {
+    height: calc(100% - 70px - 80px);
+    background-color: rgb(202, 167, 102);
+    overflow-y: auto;
+}
+.message-chat-content .chat-content {
+    height: 130%;
+}
+
+.message-chat-content::-webkit-scrollbar {
+    width: 10px;
+    background-color: lightgray;
+}
+.message-chat-content::-webkit-scrollbar-track {
+    background-color:var(--grigioSfondo);
+    border-radius: 10px;
+}
+.message-chat-content::-webkit-scrollbar-thumb{
+    background-color: rgb(136, 136, 136);
+    border-radius: 10px;
+    transition: all 3s ease-in-out;
+}
+.message-chat-content::-webkit-scrollbar-thumb:hover {
+  cursor:pointer;
+  background-color: rgb(156, 156, 156);
+}
+                                            /* FINE MESSAGE CHAT CONTENT */
+
+                                            /* SEND MESSAGE CONTENT  */
+.send-message-content {
+    height: 80px;
+}
+
+.message-options {
+    height: 100%;
+    padding: var(--padding20);
+    display: flex;
+    align-items: center;
+}
+
+.emoji, .message-content, .send-message {
+    height: 85%;
+}
+.emoji, .send-message {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.message-content {
+    width: 70%;
 }
