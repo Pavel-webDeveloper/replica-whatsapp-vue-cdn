@@ -13,7 +13,7 @@
     <div id="app">
         <header></header>
         <main>
-            <div class="main-content container">
+            <div class="main-content">
                 <!-- LEFT CONTENT -->
                 <div class="left-content">
                     <!-- HEADER CONTENT -->
@@ -24,25 +24,25 @@
                                     <img src="img/foto_profilo_arancio.jpg" alt="">
                                 </div>
                                 <div class="my-name">
-                                    <span>Pavel</span>
+                                    <span><strong>Pavel</strong></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="profilo-info">
-                            <i>aa</i>
-                            <i>aaa</i>
-                            <i>aaa</i>
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
                     <!-- FINE HEADER CONTENT -->
 
                     <!-- NOTIFICATION CONTENT -->
                     <div class="notification-content">
-                        <div class="icon-content"></div>
+                        <div class="icon-content"><i class="fa-solid fa-bell-slash"></i></div>
                         <div class="message-content">
-                            <span>Ricevi Notifiche</span>
-                            <a href="" style="color: rgb(146, 144, 144);">Attiva notifiche</a>
+                            <span>Ricevi Notifiche di nuovi messaggi</span>
+                            <a href="#">Attiva notifiche desktop</a>
                         </div>
                     </div>
                     <!-- FINE NOTIFICATION CONTENT -->
@@ -50,10 +50,10 @@
                     <!-- INPUT SEARCH CONTENT -->
                     <div class="input-search-content">
                         <div class="search-content">
-                            <label for="searchInput"></label>
+                            <label class="form-control" for="searchInput"><i class="fa-solid fa-magnifying-glass"></i></label>
                         </div>
                         <div class="input-content">
-                            <input type="text" id="searchInput" placeholder="Cerca o inizia una nuova chat">
+                            <input  class="form-control" type="text" id="searchInput" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                      <!-- FINE INPUT SEARCH CONTENT -->
@@ -61,12 +61,12 @@
                      <!-- MY CHAT CONTENT -->
                     <div class="my-chat-content">
 
-                        <div class="box-chat">
+                        <div class="box-chat box-active">
                             <div class="chat-image">
                                 <img src="img/foto_profilo_arancio.jpg" alt="">
                             </div>
                             <div class="chat-info">
-                                <span class="chat-name">Michele</span>
+                                <span class="chat-name" style="color: black;"><strong>Michele</strong></span>
                                 <span class="chat-message">bla bla bla</span>
                             </div>
                             <div class="chat-date">
@@ -89,15 +89,15 @@
                                     <img src="img/foto_profilo_arancio.jpg" alt="">
                                 </div>
                                 <div class="my-name">
-                                    <span>Pavel</span>
-                                    <span>Ultimo accesso il 24 04 2025 alle 11:18</span>
+                                    <span style="color: black;"><strong>Pavel</strong></span>
+                                    <span style="color: var(--testoGrigio);">Ultimo accesso il 24 04 2025 alle 11:18</span>
                                 </div>
                             </div>
                         </div>
                         <div class="profilo-info">
-                            <i>aa</i>
-                            <i>aaa</i>
-                            <i>aaa</i>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
                     <!-- FINE HEADER CONTENT -->
@@ -113,11 +113,13 @@
                      <!-- SEND MESSAGE -->
                       <div class="send-message-content">
                         <div class="message-options">
-                            <div class="emoji"><i class="fas fa-heart"></i></div>
+                            <div class="emoji"><i class="fa-regular fa-face-smile"></i></div>
 
-                            <div class="message-content"></div>
-                            
-                            <div class="send-message"><i class="fab fa-whatsapp"></i></div>
+                            <div class="message-content">
+                                <input class="form-control" type="text" placeholder="Scrivi un messaggio">
+                            </div>
+
+                            <div class="send-message"><i class="fa-regular fa-paper-plane"></i></i></div>
                         </div>
                       </div>
                 </div>
