@@ -21,7 +21,7 @@
                         <div class="profilo-content">
                             <div class="profilo-img">
                                 <div class="myImg">
-                                    <img src="img/foto_profilo_arancio.jpg" alt="">
+                                    <img src="img/foto_profilo_arancio.jpg" alt="immagine profilo">
                                 </div>
                                 <div class="my-name">
                                     <span><strong>Pavel</strong></span>
@@ -61,16 +61,18 @@
                      <!-- MY CHAT CONTENT -->
                     <div class="my-chat-content">
 
-                        <div class="box-chat box-active">
+                        <div :class="{'box-active' : index == activeObj}" class="box-chat" v-for="(contact, index) in contatti" :key="contact.id" >
                             <div class="chat-image">
-                                <img src="img/foto_profilo_arancio.jpg" alt="">
+                                <img :src="'img/' + contact.immagine" alt="">
                             </div>
                             <div class="chat-info">
-                                <span class="chat-name" style="color: black;"><strong>Michele</strong></span>
-                                <span class="chat-message">bla bla bla</span>
+                                <span class="chat-name" style="color: black;"><strong>{{contact.nome}}</strong></span>
+                                <span class="chat-message">
+                                    {{contact.message[contact.message.length -1].content}}
+                                </span>
                             </div>
                             <div class="chat-date">
-                                <span>26 04 2025  11:18:17</span>
+                                <span>{{contact.message[contact.message.length -1].date}}</span>
                             </div>
                         </div>
                     </div>
@@ -86,11 +88,13 @@
                         <div class="profilo-content">
                             <div class="profilo-img">
                                 <div class="myImg">
-                                    <img src="img/foto_profilo_arancio.jpg" alt="">
+                                    <img :src="'img/' + contatti[activeObj].immagine" :alt="contatti[activeObj].nome">
                                 </div>
                                 <div class="my-name">
-                                    <span style="color: black;"><strong>Pavel</strong></span>
-                                    <span style="color: var(--testoGrigio);">Ultimo accesso il 24 04 2025 alle 11:18</span>
+                                    <span style="color: black;"><strong>{{contatti[activeObj].nome}}</strong></span>
+                                    <span v-if="dataAttiva.data && dataAttiva.ora" style="color: var(--testoGrigio);">
+                                        Ultimo accesso il {{dataAttiva.data}}
+                                         alle {{dataAttiva.ora}}</span>
                                 </div>
                             </div>
                         </div>

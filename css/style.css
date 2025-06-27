@@ -34,6 +34,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    max-height: 850px;
 }
                                             /* CLASSI IN COMUNE HEADER  */
 .left-content, .right-content {
@@ -118,7 +119,7 @@ main {
 }
 
 .icon-content {
-    height: 80%;
+    height: 67px;
     width: 67px;
     background-color: #ebe2e2;
     border-radius: 50%;
@@ -188,12 +189,14 @@ main {
                                             /* MY CHAT CONTENT */
 .my-chat-content {
     height: calc(100% - 70px - 100px - 45px );
-    background-color: #dde1eb;
+    background-color: #fff;
     overflow-y: scroll;
+    cursor: pointer;
+    /* transition: all 0.3s ease; */
 }
 .my-chat-content::-webkit-scrollbar {
     width: 10px;
-    background: var(--colScrollBar);
+    background: lightgray;
     /* border-radius: 10px; */
 }
 .my-chat-content::-webkit-scrollbar-track {
@@ -201,12 +204,13 @@ main {
     border-radius: 10px;
 }
 .my-chat-content::-webkit-scrollbar-thumb{
-    background: #ffffffc7;
-  /* border-radius: 10px; */
+    background: rgb(156, 155, 155);
+    border-radius: 10px;
 }
-.my-chat-content::-webkit-scrollbar-thumb:hover {
-  background: #a50b0b;
-}
+/* .my-chat-content:hover::-webkit-scrollbar-thumb {
+  background:#70b2ff;
+  opacity: 0.2;
+} */
 
 .box-chat {
     height: calc(100% / 6);
@@ -215,6 +219,7 @@ main {
     padding: var(--padding20);
     gap: 20px;
     position: relative;
+    border-bottom: 1px solid var(--grigioSfondo);
 }
 .box-active {
     background-color: rgb(158 161 161);
