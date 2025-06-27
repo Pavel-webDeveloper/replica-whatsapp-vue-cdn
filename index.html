@@ -61,7 +61,8 @@
                      <!-- MY CHAT CONTENT -->
                     <div class="my-chat-content">
 
-                        <div :class="{'box-active' : index == activeObj}" class="box-chat" v-for="(contact, index) in contatti" :key="contact.id" >
+                        <div :class="{'box-active' : index == activeObj}" 
+                        class="box-chat" v-for="(contact, index) in contatti" :key="contact.id" @click="selezionaChat(contact.id)">
                             <div class="chat-image">
                                 <img :src="'img/' + contact.immagine" alt="">
                             </div>
@@ -110,12 +111,14 @@
                     <div class="message-chat-content">
 
 
-                        <div class="chat-content inviato">
+                        <div class="chat-content inviato" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
+                            v-for="(mess, index) in contatti[activeObj].message">
                             <span class="chat-message">
-                                Ciao come stai??
-                                <span class="chat-message-info">10/06/2025  16:36:12
+                                {{mess.content}}
+                                <span class="chat-message-info" 
+                                    style="color:var(--testoGrigio)">{{mess.date}}
                                     <!-- if se il messaggio è inviato -->
-                                    <span>
+                                    <span v-if="mess.status == 'inviato'">
                                         <i class="fa-solid fa-check"></i>
                                         <i class="fa-solid fa-check second"></i>
                                     </span>
@@ -123,40 +126,7 @@
                             </span>
                         </div>
 
-                        <div class="chat-content ricevuto">
-                            <span class="chat-message ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam asperiores nisi illo, consectetur consequuntur nostrum in. Dolore, saepe inventore totam doloribus impedit nihil aspernatur dolorum quod recusandae nobis quasi voluptatibus? Dolorum repellendus facere maxime labore. Saepe molestiae explicabo vero quo expedita animi enim. Enim quia quam iusto impedit illo totam.</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto laboriosam a vitae perspiciatis voluptates? Doloribus perferendis doloremque facere quas nobis?</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero molestias voluptate natus quas magni culpa quam obcaecati vero! Dolorum, architecto.</span>
-                        </div>
-                        <div class="chat-content ricevuto">
-                            <span class="chat-message ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugiat quos similique veniam distinctio blanditiis, a ab accusantium aliquid voluptatibus eaque optio rerum nulla ad, dicta eveniet autem illo totam sequi voluptates, dolores hic tenetur voluptatem qui. Asperiores error veritatis dolor vel, corporis neque unde eius corrupti blanditiis nisi distinctio deserunt itaque nihil voluptatibus laborum, sit accusamus ea nesciunt rerum rem aliquid impedit, necessitatibus illo sequi. Nihil veritatis aperiam sunt, sequi harum a, reprehenderit consectetur quasi nulla praesentium porro cupiditate. Voluptates unde rem iure alias quibusdam! Et omnis ab reprehenderit quis modi nemo nulla nihil tempore! Quisquam sit error odit, nemo sapiente cum architecto dolorem iste quasi commodi. Doloremque praesentium itaque sed quae voluptas necessitatibus magni, illo voluptatem. Totam voluptas assumenda facere. Quisquam, sed perferendis reiciendis enim debitis aspernatur tempore? Enim sapiente consequuntur, animi eos est ad sed optio iste adipisci? Amet, porro impedit ex labore quo facilis quia officia sed accusamus atque, voluptatem a fugit nemo dicta molestiae eos repellat ipsam quibusdam distinctio, quam natus cumque hic totam. Debitis labore, adipisci culpa rem voluptatibus ut similique eaque magnam corporis impedit nostrum at. Atque placeat deleniti necessitatibus autem optio saepe ex, aut ad totam quia asperiores velit dolor dolorum reprehenderit laborum, corporis ipsa natus? Repudiandae, alias. Deleniti asperiores doloribus, aspernatur a est eveniet itaque ad nam quo error vel sed numquam aut rem corrupti, placeat illo, ab minus excepturi. Eos maiores optio qui placeat! Facilis esse fugit dolorum sequi nostrum voluptates itaque quaerat natus blanditiis incidunt quas libero harum, consequuntur assumenda molestias neque sit ducimus suscipit ipsum sed ad optio quo. Veniam, nesciunt ab. Vero soluta laudantium earum quos voluptatibus tempora quaerat molestias autem optio delectus. Officia veritatis, nihil quidem architecto placeat deserunt sunt, culpa id autem modi quisquam quaerat laudantium dolor delectus? Magni, itaque nesciunt recusandae laboriosam ad et odit aspernatur aliquid officia consequuntur maxime velit enim exercitationem molestiae quae dolorum. Adipisci molestias dicta quia odit harum ad necessitatibus laudantium perspiciatis totam quis, nesciunt a quisquam! Neque, eaque odit consequuntur modi iste expedita reiciendis laboriosam. Consequuntur obcaecati explicabo similique deleniti veritatis, atque, velit officiis minus eum possimus animi distinctio dignissimos repellendus cumque, ullam itaque fugit saepe a nisi dolor vel repudiandae illum minima? Autem, facilis qui iusto molestiae accusamus pariatur libero tenetur quisquam dignissimos, saepe blanditiis error aspernatur id necessitatibus quo quis in ipsa eaque? Quasi in dolores voluptatem. Eveniet nulla odit sit ullam inventore molestias placeat, repellat minus!</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Ciao come stai??</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Ciao come stai??</span>
-                        </div>
-                        <div class="chat-content ricevuto">
-                            <span class="chat-message ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe molestias, deleniti quaerat quo esse accusamus. Deserunt, ut! Dolore, cumque. Fugiat, eveniet? Nemo qui quaerat repellendus tenetur iste maiores quis incidunt animi suscipit alias tempora reprehenderit laudantium ratione reiciendis, distinctio in!</span>
-                        </div>
-                        <div class="chat-content ricevuto">
-                            <span class="chat-message ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe molestias, deleniti quaerat quo esse accusamus. Deserunt, ut! Dolore, cumque. Fugiat, eveniet? Nemo qui quaerat repellendus tenetur iste maiores quis incidunt animi suscipit alias tempora reprehenderit laudantium ratione reiciendis, distinctio in!</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Ciao come stai??</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Ciao come stai??</span>
-                        </div>
-                        <div class="chat-content inviato">
-                            <span class="chat-message">Ciao come stai??</span>
-                        </div>
-
+                        
                        
 
 
@@ -166,7 +136,7 @@
                      <!-- FINE MESSAGE CHAT CONTENT -->
 
                      <!-- SEND MESSAGE -->
-                      <div class="send-message-content">
+                    <div class="send-message-content">
                         <div class="message-options">
                             <div class="emoji"><i class="fa-regular fa-face-smile"></i></div>
 
@@ -176,7 +146,8 @@
 
                             <div class="send-message"><i class="fa-regular fa-paper-plane"></i></i></div>
                         </div>
-                      </div>
+                    </div>
+                    <!-- FINE SEND MESSAGE -->
                 </div>
             </div>
 
