@@ -226,6 +226,13 @@ const app = new Vue({
     methods: {
         // toLocaleDateString('it-IT'))
     // toLocaleTimeString('it-IT'))
+        selezionaChat(itemId){
+            // console.log(itemId, "itemId");
+            const chatSelezionata = this.contatti.find((user) => {   
+                return user.id === itemId;
+            });
+            this.activeObj = this.contatti.indexOf(chatSelezionata);    
+        }
     },
     computed: {
         dataAttiva(){
@@ -235,18 +242,6 @@ const app = new Vue({
             const [data, ora] = ultimoMess.split(" ");
             return {data, ora}
         },
-
-        // dataAttiva() {
-        //     const messaggi = this.contatti[this.activeObj]?.message || [];
-        //     const ultimaData = messaggi[messaggi.length - 1]?.date;
-
-        //     if (!ultimaData) return { data: '', ora: '' };
-
-        //     const [data, ora] = ultimaData.split(" ");
-        //     return { data, ora };
-        // }
-
-
     },
     mounted(){
         

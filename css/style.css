@@ -354,6 +354,7 @@ main {
 }
 .chat-message-info i {
     transform: rotate(-13deg);
+    color: #70b2ff;
 }
 .chat-message-info i.second {
     transform: rotate(-13deg) translateX(-9px) translateY(-2px);
