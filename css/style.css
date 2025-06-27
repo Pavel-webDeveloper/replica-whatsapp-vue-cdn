@@ -69,7 +69,7 @@ main {
     gap: 15px;
 }
 .myImg {
-    height: 100%;
+    height: 53px;
     width: 53px;
     border-radius: 50%;
     overflow: hidden;
@@ -128,13 +128,13 @@ main {
     font-size: 25px;
     color: #70b2ff;
 }
-.message-content {
+.notification-content .message-content {
     height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.message-content a {
+.notification-content .message-content a {
     color: rgb(221 217 217);
     opacity: 0.7;
     transition: opacity 0.2s;
@@ -221,7 +221,7 @@ main {
 }
 
 .chat-image {
-    height: 85%;
+    height: 76px;
     width: 76px;
     border-radius: 50%;
     overflow: hidden;
@@ -265,9 +265,8 @@ main {
     height: calc(100% - 70px - 70px);
     background-color: rgb(202, 167, 102);
     overflow-y: auto;
-}
-.message-chat-content .chat-content {
-    height: 130%;
+    background-image: url(../img/mine.jpg);
+    padding: 50px;
 }
 
 .message-chat-content::-webkit-scrollbar {
@@ -287,8 +286,78 @@ main {
   cursor:pointer;
   background-color: rgb(156, 156, 156);
 }
-                                            /* FINE MESSAGE CHAT CONTENT */
 
+.message-chat-content .chat-content {
+    margin-bottom: 10px;
+}
+
+
+.message-chat-content .chat-message {
+    padding: 12px 20px 23px 17px;
+    border-radius: 15px;
+    display: inline-block;
+    width: 300px;
+    position: relative;
+} 
+
+/* UTILIZZANDO FLOAT E CLEARFIX */
+/* <div class="chat-content clearfix">
+    <span class="chat-message inviato">Ciao come stai??</span>
+</div>
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  .chat-message : word-wrap: break-word;
+.ricevuto {
+    float: left;
+    background-color: white;
+}
+
+.inviato {
+    float: right;
+    background-color: rgb(166, 221, 121);
+} */
+
+/* UTILIZZO FLEX E GIOCO CON START & END */
+
+.message-chat-content .chat-content {
+    display: flex;
+}
+.message-chat-content .inviato {
+    display: flex;
+    justify-content: flex-end;
+}
+.inviato span {
+    background-color: rgb(166, 221, 121);
+}
+
+.message-chat-content .ricevuto {
+    display: flex;
+    justify-content: flex-start;
+}
+.ricevuto span {
+    background-color: white;
+}
+
+.message-chat-content .chat-message-info {
+    position: absolute;
+    bottom: 4px;
+    right: 0px;
+    font-size: 12px;
+}
+.chat-message-info i {
+    transform: rotate(-13deg);
+}
+.chat-message-info i.second {
+    transform: rotate(-13deg) translateX(-9px) translateY(-2px);
+}
+/* .chat-message-info i:hover {
+    color: #70b2ff;
+} */
+
+                                            /* FINE MESSAGE CHAT CONTENT */
                                             /* SEND MESSAGE CONTENT  */
 .send-message-content {
     height: 70px;
@@ -302,7 +371,7 @@ main {
     align-items: center;
 }
 
-.emoji, .message-content, .send-message {
+.emoji, .message-options .message-content, .send-message {
     height: 85%;
 }
 .emoji, .send-message {
@@ -315,12 +384,16 @@ main {
 }
 .emoji i, .send-message i {
     cursor: pointer;
+    transition: all 0.4s ease;
 }
-.message-content {
+.emoji i:hover, .send-message i:hover {
+    color: #969393;
+}
+.message-options .message-content {
     width: 80%;
 }
 
-.message-content input {
+.message-options .message-content input {
     height: 100%;
     padding: 10px;
 }
