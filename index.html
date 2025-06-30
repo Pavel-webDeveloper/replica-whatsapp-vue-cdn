@@ -53,7 +53,8 @@
                             <label class="form-control" for="searchInput"><i class="fa-solid fa-magnifying-glass"></i></label>
                         </div>
                         <div class="input-content">
-                            <input  class="form-control" type="text" id="searchInput" placeholder="Cerca o inizia una nuova chat">
+                            <input
+                              class="form-control" type="text" id="searchInput" placeholder="Cerca o inizia una nuova chat" v-model="searchInput" @keyup="filtraChat">
                         </div>
                     </div>
                      <!-- FINE INPUT SEARCH CONTENT -->
@@ -62,14 +63,15 @@
                     <div class="my-chat-content">
 
                         <div :class="{'box-active' : index == activeObj}" 
-                        class="box-chat" v-for="(contact, index) in contatti" :key="contact.id" @click="selezionaChat(contact.id)">
+                        class="box-chat" v-for="(contact, index) in filtraChat()" :key="contact.id" @click="selezionaChat(contact.id)">
                             <div class="chat-image">
                                 <img :src="'img/' + contact.immagine" alt="">
                             </div>
                             <div class="chat-info">
                                 <span class="chat-name" style="color: black;"><strong>{{contact.nome}}</strong></span>
                                 <span class="chat-message">
-                                    {{contact.message[contact.message.length -1].content}}
+                                    {{contact.message[contact.message.length -1].content.slice(0, 20)}}
+                                    <span v-if="contact.message[contact.message.length -1].content.length > 10">...</span>
                                 </span>
                             </div>
                             <div class="chat-date">

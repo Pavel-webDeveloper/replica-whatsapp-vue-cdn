@@ -221,6 +221,7 @@ const app = new Vue({
             },
         ],
         activeObj: 0,
+        searchInput: "",
         
     },
     methods: {
@@ -232,6 +233,19 @@ const app = new Vue({
                 return user.id === itemId;
             });
             this.activeObj = this.contatti.indexOf(chatSelezionata);    
+        },
+        filtraChat(){
+            if(this.searchInput == ""){
+                return this.contatti;
+            }
+            else {
+                // console.log(this.searchInput, "searchInput");
+                    const listaFiltrata = this.contatti.filter((item)=>{
+                    return item.nome.toLowerCase().includes(this.searchInput.toLowerCase());
+                });
+                console.log(listaFiltrata);
+                return listaFiltrata;
+            }
         }
     },
     computed: {
@@ -244,6 +258,6 @@ const app = new Vue({
         },
     },
     mounted(){
-        
+        this.filtraChat();
     }
 })
