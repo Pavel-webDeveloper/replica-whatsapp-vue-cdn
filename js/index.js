@@ -229,10 +229,12 @@ const app = new Vue({
     // toLocaleTimeString('it-IT'))
         selezionaChat(itemId){
             // console.log(itemId, "itemId");
-            const chatSelezionata = this.contatti.find((user) => {   
+            const chatSelezionata = this.filtraChat().find((user) => {   
                 return user.id === itemId;
             });
-            this.activeObj = this.contatti.indexOf(chatSelezionata);    
+            this.activeObj = this.filtraChat().indexOf(chatSelezionata); 
+            console.log(this.activeObj);
+              
         },
         filtraChat(){
             if(this.searchInput == ""){
@@ -243,7 +245,11 @@ const app = new Vue({
                     const listaFiltrata = this.contatti.filter((item)=>{
                     return item.nome.toLowerCase().includes(this.searchInput.toLowerCase());
                 });
-                console.log(listaFiltrata);
+                // console.log(listaFiltrata);
+                // console.log(this.activeObj);
+                if( listaFiltrata.length < this.activeObj){
+                    this.activeObj = 0;
+                }
                 return listaFiltrata;
             }
         }

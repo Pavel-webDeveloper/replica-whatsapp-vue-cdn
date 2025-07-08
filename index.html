@@ -91,10 +91,10 @@
                         <div class="profilo-content">
                             <div class="profilo-img">
                                 <div class="myImg">
-                                    <img :src="'img/' + contatti[activeObj].immagine" :alt="contatti[activeObj].nome">
+                                    <img :src="'img/' + filtraChat()[activeObj].immagine" :alt="filtraChat()[activeObj].nome">
                                 </div>
                                 <div class="my-name">
-                                    <span style="color: black;"><strong>{{contatti[activeObj].nome}}</strong></span>
+                                    <span style="color: black;"><strong>{{filtraChat()[activeObj].nome}}</strong></span>
                                     <span v-if="dataAttiva.data && dataAttiva.ora" style="color: var(--testoGrigio);">
                                         Ultimo accesso il {{dataAttiva.data}}
                                          alle {{dataAttiva.ora}}</span>
@@ -114,7 +114,7 @@
 
 
                         <div class="chat-content inviato" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
-                            v-for="(mess, index) in contatti[activeObj].message">
+                            v-for="(mess, index) in filtraChat()[activeObj].message">
                             <span class="chat-message">
                                 {{mess.content}}
                                 <span class="chat-message-info" 
