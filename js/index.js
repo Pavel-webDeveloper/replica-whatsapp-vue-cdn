@@ -222,36 +222,82 @@ const app = new Vue({
         ],
         activeObj: 0,
         searchInput: "",
+        scriviMess: "",
         
     },
     methods: {
         // toLocaleDateString('it-IT'))
     // toLocaleTimeString('it-IT'))
+
+    // SELEZIONA LA CHAT 
         selezionaChat(itemId){
             // console.log(itemId, "itemId");
             const chatSelezionata = this.filtraChat().find((user) => {   
+                // cerca il primo elemento che ha l’id uguale a itemId.
                 return user.id === itemId;
             });
+            // AGGIORNO L'INDICE DELL'ELEMENTO SELEZIONATO
             this.activeObj = this.filtraChat().indexOf(chatSelezionata); 
-            console.log(this.activeObj);
+            // console.log(this.activeObj);
               
         },
+
         filtraChat(){
             if(this.searchInput == ""){
                 return this.contatti;
             }
             else {
                 // console.log(this.searchInput, "searchInput");
-                    const listaFiltrata = this.contatti.filter((item)=>{
-                    return item.nome.toLowerCase().includes(this.searchInput.toLowerCase());
+                const listaFiltrata = this.contatti.filter((item)=>{
+                return item.nome.toLowerCase().includes(this.searchInput.toLowerCase());
                 });
+                if( listaFiltrata.length === 0){
+                    this.searchInput = "NESSUN ELEMENTO TROVATO";
+                    console.warn("Chat selezionata non trovata tra i risultati filtrati.");
+                }
                 // console.log(listaFiltrata);
                 // console.log(this.activeObj);
-                if( listaFiltrata.length < this.activeObj){
+                if( listaFiltrata.length <= this.activeObj){
                     this.activeObj = 0;
                 }
                 return listaFiltrata;
             }
+        },
+
+        inviaMess(){
+            // console.log(this.scriviMess);
+            // console.log(this.filtraChat()[this.activeObj]);
+            const newMessage = {
+                content: this.scriviMess,
+                date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
+                status: "inviato",
+            };
+            // console.log(newMessage);
+            this.filtraChat()[this.activeObj].message.push(newMessage);
+            
+            let risposte = [
+                "Ciao, bello risentirti",
+                "Come stai? spero tutto bene",
+                "adesso non posso parlare",
+                "allora confermato per stasera?",
+                "ci vediamo domani",
+                "oggi non ci sono",
+                "tutto bene grazie e tu?"
+            ];
+
+            let rispostaCasual = Math.floor(Math.random() * risposte.length);
+            // console.log(risposte[rispostaCasual], "rispostaCasual");
+
+            setTimeout(()=> {
+                let rispostaMess = {
+                    content: risposte[rispostaCasual],
+                    date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
+                    status: "ricevuto",
+                };
+                this.filtraChat()[this.activeObj].message.push(rispostaMess);
+            }, 3000);
+            
+            
         }
     },
     computed: {

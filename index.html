@@ -143,10 +143,10 @@
                             <div class="emoji"><i class="fa-regular fa-face-smile"></i></div>
 
                             <div class="message-content">
-                                <input class="form-control" type="text" placeholder="Scrivi un messaggio">
+                                <input class="form-control" type="text" placeholder="Scrivi un messaggio" v-model="scriviMess" @keyup.enter="inviaMess" >
                             </div>
 
-                            <div class="send-message"><i class="fa-regular fa-paper-plane"></i></i></div>
+                            <div class="send-message"><i class="fa-regular fa-paper-plane" @click="inviaMess"></i></div>
                         </div>
                     </div>
                     <!-- FINE SEND MESSAGE -->
