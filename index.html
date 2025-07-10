@@ -70,12 +70,14 @@
                             <div class="chat-info">
                                 <span class="chat-name" style="color: black;"><strong>{{contact.nome}}</strong></span>
                                 <span class="chat-message">
-                                    {{contact.message[contact.message.length -1].content.slice(0, 20)}}
-                                    <span v-if="contact.message[contact.message.length -1].content.length > 10">...</span>
+                                    {{
+                                        contact.message.length > 0 ? contact.message[contact.message.length -1].content.slice(0, 20) : ''
+                                    }}
+                                    <!-- <span v-if="contact.message[contact.message.length -1].content.length > 10 || contact.message.length > 0 ">...</span> -->
                                 </span>
                             </div>
                             <div class="chat-date">
-                                <span>{{contact.message[contact.message.length -1].date}}</span>
+                                <span>{{contact.message.length > 0 ? contact.message[contact.message.length -1].date : ''}}</span>
                             </div>
                         </div>
                     </div>
@@ -95,7 +97,7 @@
                                 </div>
                                 <div class="my-name">
                                     <span style="color: black;"><strong>{{filtraChat()[activeObj].nome}}</strong></span>
-                                    <span v-if="dataAttiva.data && dataAttiva.ora" style="color: var(--testoGrigio);">
+                                    <span v-if="filtraChat()[activeObj].message.length > 0 && dataAttiva.data && dataAttiva.ora" style="color: var(--testoGrigio);">
                                         Ultimo accesso il {{dataAttiva.data}}
                                          alle {{dataAttiva.ora}}</span>
                                 </div>
@@ -110,15 +112,15 @@
                     <!-- FINE HEADER CONTENT -->
 
                     <!-- MESSAGE CHAT CONTENT -->
-                    <div class="message-chat-content" v-if="filtraChat()[this.activeObj].message.length >= 0">
+                    <div class="message-chat-content">
 
 
                         <div class="chat-content" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
                             v-for="(mess, index) in filtraChat()[activeObj].message">
                             <span class="chat-message">
                                 {{mess.content}}
-                                <span class="chat-message-info" 
-                                    style="color:var(--testoGrigio)">{{mess.date}}
+                                <span class="chat-message-info"
+                                    style="color:var(--testoGrigio)">{{filtraChat()[activeObj].message.length > 0 ? mess.date : ''}}
                                     <!-- if se il messaggio è inviato -->
                                     <span v-if="mess.status == 'inviato'">
                                         <i class="fa-solid fa-check"></i>

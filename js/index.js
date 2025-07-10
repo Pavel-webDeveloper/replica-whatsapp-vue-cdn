@@ -333,13 +333,17 @@ const app = new Vue({
         },
 
         cancellaMessaggio(elm, i){
-            console.log(elm, " elemento" );
-            console.log(i, " indice" );
 
-            console.log(this.filtraChat()[this.activeObj], "el");
-            this.filtraChat()[this.activeObj].message.splice(i, 1);
-            console.log(this.filtraChat()[this.activeObj].message.length);
-            
+            if(this.filtraChat()[this.activeObj].message.length > 0){
+
+                console.log(elm, " elemento" );
+                console.log(i, " indice" );
+    
+                console.log(this.filtraChat()[this.activeObj], "el");
+                this.filtraChat()[this.activeObj].message.splice(i, 1);
+                console.log(this.filtraChat()[this.activeObj].message.length);
+                
+            }
         }
 
     },
