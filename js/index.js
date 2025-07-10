@@ -236,6 +236,8 @@ const app = new Vue({
     // SELEZIONA LA CHAT 
         selezionaChat(itemId){
             this.scriviMess = "";
+            this.showMessInfo();
+            
             // console.log(itemId, "itemId");
             const chatSelezionata = this.filtraChat().find((user) => {   
                 // cerca il primo elemento che ha l’id uguale a itemId.
@@ -244,7 +246,6 @@ const app = new Vue({
             // AGGIORNO L'INDICE DELL'ELEMENTO SELEZIONATO
             this.activeObj = this.filtraChat().indexOf(chatSelezionata); 
             // console.log(this.activeObj);
-              
         },
 
         filtraChat(){
@@ -314,18 +315,32 @@ const app = new Vue({
         },
 
         showMessInfo(i){
+            
             if (this.selectedInfoIndex === i) {
-                console.log(this.selectedInfoIndex);
+                // console.log(this.selectedInfoIndex);
                 this.infoActive = !this.infoActive; // chiude se già aperto
                 // this.isRotate = !this.isRotate; // inverti la rotazione
                 this.$set(this.isRotate, i, !this.isRotate[i]);
+                // console.log(this.isRotate);
             } else {
                 this.infoActive = true;             // apre se è un altro
                 this.selectedInfoIndex = i;
                 // this.isRotate = true;
                 this.$set(this.isRotate, i, true);
+                // console.log(this.isRotate);
+                
             }
         },
+
+        cancellaMessaggio(elm, i){
+            console.log(elm, " elemento" );
+            console.log(i, " indice" );
+
+            console.log(this.filtraChat()[this.activeObj], "el");
+            this.filtraChat()[this.activeObj].message.splice(i, 1);
+            console.log(this.filtraChat()[this.activeObj].message.length);
+            
+        }
 
     },
     computed: {

@@ -110,7 +110,7 @@
                     <!-- FINE HEADER CONTENT -->
 
                     <!-- MESSAGE CHAT CONTENT -->
-                    <div class="message-chat-content">
+                    <div class="message-chat-content" v-if="filtraChat()[this.activeObj].message.length >= 0">
 
 
                         <div class="chat-content" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
@@ -131,19 +131,13 @@
                                 <span class="delete-info" v-if="infoActive && selectedInfoIndex === index">
                                     <ul>
                                         <li>Info</li>
-                                        <li class="deleteMess">Cancella messaggio</li>
+                                        <li class="deleteMess" @click="cancellaMessaggio(mess, index)">Cancella messaggio</li>
                                     </ul>
                                 </span>
                             </span>
                         </div>
-
-                        
-                       
-
-
-
-
                     </div>
+                    
                      <!-- FINE MESSAGE CHAT CONTENT -->
 
                      <!-- SEND MESSAGE -->

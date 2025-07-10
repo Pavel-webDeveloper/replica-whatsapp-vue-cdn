@@ -35,6 +35,7 @@ main {
     transform: translateX(-50%);
     display: flex;
     max-height: 850px;
+    min-width: 660px;
 }
                                             /* CLASSI IN COMUNE HEADER  */
 .left-content, .right-content {
@@ -74,6 +75,8 @@ main {
     width: 53px;
     border-radius: 50%;
     overflow: hidden;
+    min-width: 53px;
+    min-height: 53px;
 
 }
 .myImg img {
@@ -220,6 +223,7 @@ main {
     gap: 20px;
     position: relative;
     border-bottom: 1px solid var(--grigioSfondo);
+    min-height: 100px;
 }
 .box-active {
     background-color: rgb(158 161 161);
@@ -230,6 +234,7 @@ main {
     width: 76px;
     border-radius: 50%;
     overflow: hidden;
+    min-width: 73px;
 }
 .chat-image img {
     width: 100%;
