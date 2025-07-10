@@ -293,7 +293,7 @@ main {
 }
 
 .message-chat-content .chat-content {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -349,8 +349,11 @@ main {
 .message-chat-content .chat-message-info {
     position: absolute;
     bottom: 4px;
-    right: 0px;
+    right: 6px;
     font-size: 12px;
+}
+.message-chat-content .chat-message-info .inviato {
+    right: 0px;
 }
 .chat-message-info i {
     transform: rotate(-13deg);
@@ -362,6 +365,52 @@ main {
 /* .chat-message-info i:hover {
     color: #70b2ff;
 } */
+
+.message-chat-content .delete-message-info {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    cursor: pointer;
+    opacity: 0;
+}
+.message-chat-content .chat-content .chat-message:hover .delete-message-info{
+    opacity: 1;
+    color: var(--testoGrigio);
+    transition: opacity 0.8s;
+}
+
+.message-chat-content .chat-content .delete-info {
+    position: absolute;
+    background-color: lightgray;
+    bottom: -56px;
+    right: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #333, -2px -2px 5px #aaa;
+}
+.message-chat-content .chat-content .delete-info {
+    z-index: 1;
+}
+.message-chat-content .chat-content .delete-info ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    cursor: pointer;
+}
+.message-chat-content .chat-content .delete-info ul li:hover {
+    color: #70b2ff;
+}
+.message-chat-content .chat-content .delete-info ul li.deleteMess:hover {
+    color: red;
+}
+
+.delete-message-info .apri-icona {
+    transition: transform 0.3s ease;
+}
+.ruota-icona {
+    transform: rotate(45deg)
+}
+
 
                                             /* FINE MESSAGE CHAT CONTENT */
                                             /* SEND MESSAGE CONTENT  */

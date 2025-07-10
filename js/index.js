@@ -223,6 +223,10 @@ const app = new Vue({
         activeObj: 0,
         searchInput: "",
         scriviMess: "",
+        infoActive: false,
+        selectedInfoIndex: null,
+        // isRotate: false,
+        isRotate: {},
         
     },
     methods: {
@@ -231,6 +235,7 @@ const app = new Vue({
 
     // SELEZIONA LA CHAT 
         selezionaChat(itemId){
+            this.scriviMess = "";
             // console.log(itemId, "itemId");
             const chatSelezionata = this.filtraChat().find((user) => {   
                 // cerca il primo elemento che ha l’id uguale a itemId.
@@ -248,18 +253,18 @@ const app = new Vue({
             }
             else {
                 // console.log(this.searchInput, "searchInput");
-                const listaFiltrata = this.contatti.filter((item)=>{
+                let listaFiltrata = this.contatti.filter((item)=>{
                 return item.nome.toLowerCase().includes(this.searchInput.toLowerCase());
                 });
-                if( listaFiltrata.length === 0){
-                    this.searchInput = "NESSUN ELEMENTO TROVATO";
-                    console.warn("Chat selezionata non trovata tra i risultati filtrati.");
-                }
-                // console.log(listaFiltrata);
-                // console.log(this.activeObj);
                 if( listaFiltrata.length <= this.activeObj){
                     this.activeObj = 0;
                 }
+                if( listaFiltrata.length === 0){
+                    console.warn("Chat selezionata non trovata tra i risultati filtrati.");                    
+                }
+                // console.log(listaFiltrata);
+                // console.log(this.activeObj);
+                
                 return listaFiltrata;
             }
         },
@@ -267,13 +272,20 @@ const app = new Vue({
         inviaMess(){
             // console.log(this.scriviMess);
             // console.log(this.filtraChat()[this.activeObj]);
+
+            // controllo se il messaggio è vuoto
+            if( this.scriviMess === "") return;
+
+            const elemento = this.filtraChat()[this.activeObj];
+
             const newMessage = {
                 content: this.scriviMess,
                 date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
                 status: "inviato",
             };
             // console.log(newMessage);
-            this.filtraChat()[this.activeObj].message.push(newMessage);
+            // this.filtraChat()[this.activeObj].message.push(newMessage);
+            elemento.message.push(newMessage);
             
             let risposte = [
                 "Ciao, bello risentirti",
@@ -289,16 +301,32 @@ const app = new Vue({
             // console.log(risposte[rispostaCasual], "rispostaCasual");
 
             setTimeout(()=> {
+
                 let rispostaMess = {
                     content: risposte[rispostaCasual],
                     date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
                     status: "ricevuto",
                 };
-                this.filtraChat()[this.activeObj].message.push(rispostaMess);
+                elemento.message.push(rispostaMess);
             }, 3000);
             
-            
-        }
+            this.scriviMess = "";
+        },
+
+        showMessInfo(i){
+            if (this.selectedInfoIndex === i) {
+                console.log(this.selectedInfoIndex);
+                this.infoActive = !this.infoActive; // chiude se già aperto
+                // this.isRotate = !this.isRotate; // inverti la rotazione
+                this.$set(this.isRotate, i, !this.isRotate[i]);
+            } else {
+                this.infoActive = true;             // apre se è un altro
+                this.selectedInfoIndex = i;
+                // this.isRotate = true;
+                this.$set(this.isRotate, i, true);
+            }
+        },
+
     },
     computed: {
         dataAttiva(){

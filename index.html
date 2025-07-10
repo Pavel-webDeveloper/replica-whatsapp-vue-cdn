@@ -113,7 +113,7 @@
                     <div class="message-chat-content">
 
 
-                        <div class="chat-content inviato" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
+                        <div class="chat-content" :class="mess.status == 'inviato' ? 'inviato' : 'ricevuto' "
                             v-for="(mess, index) in filtraChat()[activeObj].message">
                             <span class="chat-message">
                                 {{mess.content}}
@@ -124,6 +124,15 @@
                                         <i class="fa-solid fa-check"></i>
                                         <i class="fa-solid fa-check second"></i>
                                     </span>
+                                </span>
+                                <span class="delete-message-info" @click="showMessInfo(index)">
+                                    <i class="fa-solid fa-plus" :class="{'apri-icona' : true, 'ruota-icona' : isRotate[index] }"></i>
+                                </span>
+                                <span class="delete-info" v-if="infoActive && selectedInfoIndex === index">
+                                    <ul>
+                                        <li>Info</li>
+                                        <li class="deleteMess">Cancella messaggio</li>
+                                    </ul>
                                 </span>
                             </span>
                         </div>
